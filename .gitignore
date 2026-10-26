@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local PDF inspection artifacts
+_inspect_*
+_compare/
+_sample-generated.pdf
+
+# original scanned job photo (contains handwritten site data)
+/Mold.pdf
