@@ -23,7 +23,7 @@ export function DateField({ id, label, value, onChange, error, required }: DateF
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={`min-h-12 w-full rounded-xl border bg-white px-3.5 text-base text-stone-900 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-700/30 ${
+        className={`field-input rounded-xl border bg-white px-3 text-base text-stone-900 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-700/30 ${
           error ? "border-rose-400 focus:border-rose-500" : "border-stone-300 focus:border-teal-700"
         }`}
       />

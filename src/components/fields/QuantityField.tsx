@@ -31,7 +31,7 @@ export function QuantityField({ id, label, unit, value, onChange, error }: Quant
         onChange={(event) => onChange(event.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={`mt-2 min-h-11 w-full rounded-xl border bg-stone-50 px-3 text-base text-stone-900 outline-none transition focus:bg-white focus:ring-2 focus:ring-teal-700/30 ${
+        className={`field-input mt-2 rounded-xl border bg-stone-50 px-3 text-base text-stone-900 outline-none transition focus:bg-white focus:ring-2 focus:ring-teal-700/30 ${
           error ? "border-rose-400" : "border-stone-300 focus:border-teal-700"
         }`}
       />
