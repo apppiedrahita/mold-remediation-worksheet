@@ -8,7 +8,7 @@ import {
   PPE_ITEMS,
   SUPPLIES,
 } from "@/data/catalog";
-import { formatFormDate, formatFormTime } from "@/lib/format";
+import { formatEquipmentLabel, formatFormDate, formatFormTime } from "@/lib/format";
 import { isFilled } from "@/lib/validation";
 import type { WorksheetFormData } from "@/types/form";
 
@@ -66,7 +66,7 @@ export function ReviewSection({ data }: ReviewSectionProps) {
             return (
               <Row
                 key={item.id}
-                label={item.label}
+                label={formatEquipmentLabel(item.id, item.label, entry.size)}
                 value={date ? `${entry.qty} · ${date}` : entry.qty}
               />
             );

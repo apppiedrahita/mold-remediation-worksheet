@@ -31,9 +31,11 @@ function mergeStoredForm(stored: unknown): WorksheetFormData {
     for (const id of Object.keys(base.equipment) as Array<keyof typeof base.equipment>) {
       const entry = stored.equipment[id];
       if (isRecord(entry)) {
+        const size = entry.size;
         base.equipment[id] = {
           qty: asString(entry.qty),
           date: asString(entry.date),
+          size: size === "S" || size === "M" ? size : "",
         };
       }
     }

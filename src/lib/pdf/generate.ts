@@ -11,6 +11,7 @@ import {
 import { formatFormDate, formatFormTime } from "@/lib/format";
 import {
   drawCheck,
+  drawCircledToken,
   drawFittedText,
   drawLine,
   drawRect,
@@ -220,6 +221,22 @@ export async function generateWorksheetPdf(data: WorksheetFormData): Promise<Uin
           align: "center",
         },
       ]);
+      if (item.id === "airScrubberSM" && (entry.size === "S" || entry.size === "M")) {
+        drawCircledToken(
+          page,
+          item.label,
+          `(${entry.size})`,
+          x,
+          rowTop - equipH,
+          eqLabelW,
+          equipH,
+          {
+            font: fonts.regular,
+            size: 6.8,
+            padX: 3.2,
+          },
+        );
+      }
       rowTop -= equipH;
     }
     if (extraBlank) {

@@ -1,9 +1,14 @@
 export type YesNoValue = "" | "yes" | "no";
 
+export type AirScrubberSize = "" | "S" | "M";
+
 export interface EquipmentEntry {
   qty: string;
   date: string;
+  size: AirScrubberSize;
 }
+
+export type EquipmentPatch = Partial<Pick<EquipmentEntry, "qty" | "date" | "size">>;
 
 export type EquipmentId =
   | "airScrubberL"

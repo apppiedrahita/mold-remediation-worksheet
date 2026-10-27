@@ -22,6 +22,7 @@ import { countCompletedSections } from "@/lib/form-progress";
 import type {
   ChemicalId,
   EquipmentId,
+  EquipmentPatch,
   FieldErrorMap,
   FormStatus,
   PpeId,
@@ -66,7 +67,7 @@ export function useWorksheetForm() {
     setStatus({ tone: "idle", message: "" });
   }, [commit, data]);
 
-  const updateEquipment = useCallback((id: EquipmentId, patch: { qty?: string; date?: string }) => {
+  const updateEquipment = useCallback((id: EquipmentId, patch: EquipmentPatch) => {
     commit({
       ...data,
       equipment: {
@@ -78,6 +79,7 @@ export function useWorksheetForm() {
       ...current,
       [`equipment.${id}.qty`]: undefined,
       [`equipment.${id}.date`]: undefined,
+      [`equipment.${id}.size`]: undefined,
     }));
   }, [commit, data]);
 

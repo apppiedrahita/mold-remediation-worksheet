@@ -102,6 +102,9 @@ export function validateQuantities(data: WorksheetFormData): FieldErrorMap {
     if (isFilled(entry.date) && !isValidIsoDate(entry.date)) {
       errors[`equipment.${id}.date`] = "Enter a valid date.";
     }
+    if (id === "airScrubberSM" && isFilled(entry.qty) && entry.size !== "S" && entry.size !== "M") {
+      errors[`equipment.${id}.size`] = "Circle (S) 500 or (M) 700.";
+    }
   }
 
   for (const [id, qty] of Object.entries(data.supplies)) {

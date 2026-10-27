@@ -168,6 +168,52 @@ export function wrapToWidth(
   return lines;
 }
 
+export function drawCircledToken(
+  page: PDFPage,
+  raw: string,
+  token: string,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  options: TextOptions,
+): void {
+  const value = raw.trim();
+  if (value === "" || !value.includes(token)) {
+    return;
+  }
+
+  const padX = options.padX ?? 3;
+  const maxWidth = Math.max(4, width - padX * 2);
+  const fitted = fitText(options.font, value, options.size, maxWidth);
+  if (!fitted.text.includes(token)) {
+    return;
+  }
+
+  const prefix = fitted.text.slice(0, fitted.text.indexOf(token));
+  const prefixWidth = options.font.widthOfTextAtSize(prefix, fitted.size);
+  const tokenWidth = options.font.widthOfTextAtSize(token, fitted.size);
+  const textWidth = options.font.widthOfTextAtSize(fitted.text, fitted.size);
+  const align = options.align ?? "left";
+
+  let textX = x + padX;
+  if (align === "center") {
+    textX = x + (width - textWidth) / 2;
+  } else if (align === "right") {
+    textX = x + width - padX - textWidth;
+  }
+
+  const textY = y + (height - fitted.size) / 2 + 0.4;
+  page.drawEllipse({
+    x: textX + prefixWidth + tokenWidth / 2,
+    y: textY + fitted.size * 0.35,
+    xScale: tokenWidth / 2 + 1.7,
+    yScale: fitted.size / 2 + 1.5,
+    borderWidth: 0.95,
+    borderColor: options.color ?? ink,
+  });
+}
+
 export function drawCheck(
   page: PDFPage,
   x: number,

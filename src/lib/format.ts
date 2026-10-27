@@ -1,3 +1,22 @@
+import type { AirScrubberSize, EquipmentId } from "@/types/form";
+
+export function formatEquipmentLabel(
+  id: EquipmentId,
+  fallback: string,
+  size: AirScrubberSize,
+): string {
+  if (id !== "airScrubberSM") {
+    return fallback;
+  }
+  if (size === "S") {
+    return "Air Scrubber (S) 500 cfm";
+  }
+  if (size === "M") {
+    return "Air Scrubber (M) 700 cfm";
+  }
+  return fallback;
+}
+
 export function formatFormDate(isoDate: string): string {
   if (!isoDate) {
     return "";

@@ -16,9 +16,10 @@ export function createDemoForm(): WorksheetFormData {
   data.startTime = "09:00";
   data.endTime = "15:00";
 
-  data.equipment.airScrubberL = { qty: "1", date: "2026-03-12" };
-  data.equipment.dehumidifiersLgrEvo = { qty: "1", date: "2026-03-12" };
-  data.equipment.extensionCords = { qty: "4", date: "2026-03-12" };
+  data.equipment.airScrubberL = { qty: "1", date: "2026-03-12", size: "" };
+  data.equipment.airScrubberSM = { qty: "2", date: "2026-03-12", size: "S" };
+  data.equipment.dehumidifiersLgrEvo = { qty: "1", date: "2026-03-12", size: "" };
+  data.equipment.extensionCords = { qty: "4", date: "2026-03-12", size: "" };
 
   data.supplies.blackBags = "1/4";
   data.supplies.vacBrushesRound = "1";

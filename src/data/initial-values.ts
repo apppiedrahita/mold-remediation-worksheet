@@ -19,7 +19,7 @@ import type {
 function emptyEquipment(): Record<EquipmentId, EquipmentEntry> {
   const entries = {} as Record<EquipmentId, EquipmentEntry>;
   for (const item of ALL_EQUIPMENT) {
-    entries[item.id] = { qty: "", date: "" };
+    entries[item.id] = { qty: "", date: "", size: "" };
   }
   return entries;
 }
